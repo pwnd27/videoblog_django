@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-l%&c!goyntc*sx5r1q)&=6+f*em*&&pd#4x8-o6j15trt*=jr4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'testserver']
 
 
 # Application definition
@@ -55,7 +55,7 @@ ROOT_URLCONF = 'videoblog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [f'{BASE_DIR}/../',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
