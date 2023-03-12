@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}Видео{% endblock %}
+
+{% block content %}
+{% for video in videos %}
+    <p>{{ video.name }}</p>
+{% endfor %}    
+{% endblock %}
