@@ -3,7 +3,7 @@
 {% block title %}Видео{% endblock %}
 
 {% block content %}
-{% for video in videos %}
+{% for video in object_list %}
     <p>{{ video.name }}</p>
 {% endfor %}    
 {% endblock %}
