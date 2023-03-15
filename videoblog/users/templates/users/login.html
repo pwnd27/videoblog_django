@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <legend>Вход</legend>
+    <button>Войти</button>    
+</form>
+<small><a href="{% url 'register' %}">Регистрация</a></small>
+{% endblock %}
