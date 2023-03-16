@@ -8,6 +8,7 @@
     <div class="col-3">
         <form method="post" class="form-group">
             {% csrf_token %}
+            <h1 class="h3 mb-3 fw-normal">Регистрация</h1>
             {% for field in form %}
             <div class="mb-3">
                 <div class="form-field">

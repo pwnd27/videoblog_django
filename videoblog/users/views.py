@@ -1,9 +1,10 @@
 from django.views.generic.edit import FormView
-from users.forms import UserRegisterForm
+from django.contrib.auth.views import LoginView
+from users.forms import UserRegisterForm, UserAuthenticationForm
 from django.urls import reverse_lazy
 
 
-class UserFormView(FormView):
+class UserRegisterView(FormView):
     form_class = UserRegisterForm
     template_name = 'users/register.html'
     success_url = reverse_lazy('login')
@@ -11,3 +12,8 @@ class UserFormView(FormView):
     def form_valid(self, form):
         form.save()
         return super().form_valid(form)
+
+
+class UserLoginView(LoginView):
+    form_class = UserAuthenticationForm
+    template_name = 'users/login.html'
