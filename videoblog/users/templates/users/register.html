@@ -3,10 +3,23 @@
 {% block title %}Регистрация{% endblock %}
 
 {% block content %}
-<h2>Регистрация</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form }}
-    <input type='submit' value='Register'>
-</form>
+<div class="container">
+    <div class="row justify-content-md-center">
+    <div class="col-3">
+        <form method="post" class="form-group">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="mb-3">
+                <div class="form-field">
+                    {{ field.errors }}
+                    {{ field.label }}
+                    {{ field }}
+                </div>
+            </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-primary">Cоздать аккаунт</button>
+        </form>
+    </div>
+    </div>
+</div>
 {% endblock %}

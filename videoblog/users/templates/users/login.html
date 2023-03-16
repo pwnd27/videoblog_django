@@ -3,8 +3,16 @@
 {% block content %}
 <form method="POST">
     {% csrf_token %}
-    <legend>Вход</legend>
-    <button>Войти</button>    
+    <fieldset class="form-group">
+        <legend class="border-bottom mb-4">Вход</legend>
+        {{ form }}
+    </fieldset>
+    <div class="form-group">
+        <button class="btn btn-outline-info" type="submit">Войти</button>
+    </div>
+     
 </form>
-<small><a href="{% url 'register' %}">Регистрация</a></small>
+<div class="border-top pt-3">
+    <small class="text-muted">Нет аккаунта? <a href="{% url 'register' %}">Создать</a></small>
+</div>
 {% endblock %}
