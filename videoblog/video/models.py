@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.shortcuts import reverse
 
 
 class Video(models.Model):
@@ -8,6 +9,9 @@ class Video(models.Model):
     description = models.TextField()
     file = models.FileField(upload_to='videos/%Y/%m/%d/', max_length=50, null=True, blank=True)
     cover = models.ImageField(upload_to='covers/%Y/%m/%d/', max_length=50, null=True, blank=True)
+
+    def get_absolute_url(self):
+        return reverse('video-detail', args=[str(self.id)])
 
     def __str__(self):
         return self.name

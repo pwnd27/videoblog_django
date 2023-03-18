@@ -3,9 +3,9 @@
 {% block title %}Видео{% endblock %}
 
 {% block content %}
-
-
+<p>{{ video.name }}</p>
 <video width="320" height="240" controls>
-    <source src="{{ video.url }}" type="video/mp4">
+    <source src="{{ video.file.url }}" type="video/mp4">
   </video>
+  <p>{{ video.description }}</p>
 {% endblock %}
