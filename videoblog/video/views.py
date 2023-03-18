@@ -44,7 +44,7 @@ class VideoUpdateView(LoginRequiredMixin, UpdateView):
     ]
 
     def form_valid(self, form):
-        obj = Video.objects.get(pk=self.kwargs['pk'])
+        obj = self.get_object()
         new_file = form.cleaned_data.get('file', None)
         new_cover = form.cleaned_data.get('cover', None)
 
