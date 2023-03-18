@@ -9,6 +9,6 @@ class VideoForm(ModelForm):
         fields = [
             'name',
             'description',
-            'url',
+            'file',
             'cover',
         ]

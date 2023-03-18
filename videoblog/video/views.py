@@ -1,12 +1,21 @@
 from django.shortcuts import render, HttpResponse
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from video.models import Video
 from django.urls import reverse_lazy
 from video.forms import VideoForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+
 class VideoListView(ListView):
     model = Video
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        return queryset.exclude(file='')
+
+
+class VideoDetailView(DetailView):
+    pass
 
 
 class VideoCreateView(LoginRequiredMixin, CreateView):
@@ -19,3 +28,11 @@ class VideoCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+
+
+class VideoUpdateView(LoginRequiredMixin, UpdateView):
+    pass
+
+
+class VideoDeleteView(LoginRequiredMixin, DeleteView):
+    pass

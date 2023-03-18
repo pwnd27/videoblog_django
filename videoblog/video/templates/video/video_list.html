@@ -3,12 +3,9 @@
 {% block title %}Видео{% endblock %}
 
 {% block content %}
-<video src="{{ video.url }}"></video>
-<video width="400" height="300" controls="controls">
-    <source src="{{ video.url }}">
-</video>
 {% for video in object_list %}
-
-
+    <video width="400" height="300" controls="controls">
+        <source src="{{ video.file.url }}" type="video/mp4">
+    </video>
 {% endfor %}    
 {% endblock %}
