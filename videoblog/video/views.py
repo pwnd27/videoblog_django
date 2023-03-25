@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from video.models import Video
 from django.urls import reverse_lazy
@@ -72,3 +72,5 @@ class VideoDeleteView(LoginRequiredMixin, DeleteView):
         if obj.cover:
             os.remove(obj.cover.path)
         return super().form_valid(form)
+
+    
