@@ -3,12 +3,15 @@ from rest_framework import status
 from video.models import Video
 from video.serializers import VideoSerializer
 from rest_framework.response import Response
+from rest_framework import permissions
+from video.permissions import IsOwnerOrReadOnly
 import os
 
 
 class VideoListAPIView(generics.ListCreateAPIView):
     queryset = Video.objects.all()
     serializer_class = VideoSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
 
     def perform_create(self, instance):
         instance.save(user=self.request.user)
@@ -17,6 +20,7 @@ class VideoListAPIView(generics.ListCreateAPIView):
 class VideoDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Video.objects.all()
     serializer_class = VideoSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
 
     def perform_destroy(self, instance):
         video_path = instance.file.path
