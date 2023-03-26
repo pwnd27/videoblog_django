@@ -17,13 +17,13 @@ class VideoListView(ListView):
 
 class VideoDetailView(DetailView):
     model = Video
-    template_name = 'video/video_detail.html'
+    template_name = 'video/detail.html'
 
 
 class VideoCreateView(LoginRequiredMixin, CreateView):
     model = Video
     form_class = VideoForm
-    template_name = 'video/video_upload.html'
+    template_name = 'video/upload.html'
     success_url = reverse_lazy('list')
     login_url = '/users/login/'
 
@@ -35,7 +35,7 @@ class VideoCreateView(LoginRequiredMixin, CreateView):
 class VideoUpdateView(LoginRequiredMixin, UpdateView):
     model = Video
     login_url = '/users/login/'
-    template_name = 'video/video_update.html'
+    template_name = 'video/update.html'
     fields = [
         'name',
         'description',
@@ -62,7 +62,7 @@ class VideoUpdateView(LoginRequiredMixin, UpdateView):
 class VideoDeleteView(LoginRequiredMixin, DeleteView):
     model = Video
     login_url = '/users/login/'
-    template_name = 'video/video_delete.html'
+    template_name = 'video/delete.html'
     success_url = reverse_lazy('list')
 
     def form_valid(self, form):
